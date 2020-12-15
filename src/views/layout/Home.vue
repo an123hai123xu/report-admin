@@ -11,7 +11,9 @@
         >
           <a-sub-menu key="sub1">
             <span slot="title"><a-icon type="mail" /><span>Navigation One</span></span>
-            <a-menu-item key="1"> Option 1 </a-menu-item>
+            <a-menu-item key="1">
+              <router-link to="/login">Go to Login</router-link></a-menu-item
+            >
             <a-menu-item key="2"> Option 2 </a-menu-item>
             <a-menu-item key="3"> Option 3 </a-menu-item>
             <a-menu-item key="4"> Option 4 </a-menu-item>
@@ -85,6 +87,7 @@
         }"
       >
         Content
+        <!-- <router-view /> -->
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -107,11 +110,13 @@ export default {
         this.openKeys = latestOpenKey ? [latestOpenKey] : [];
       }
     },
+    navi() {
+      // this.$router.push("/login");
+    },
   },
 };
 </script>
 <style lang="less" scoped>
-// @import url("~@/assets/css/home.less");
 @import url("../../assets/css/home.less");
 .components-layout {
   height: 100vh;

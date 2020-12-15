@@ -3,7 +3,6 @@
   <a-layout id="components-layout-demo-custom-trigger">
     <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
       <div class="logo" />
-
       <a-menu
         theme="dark"
         mode="inline"
