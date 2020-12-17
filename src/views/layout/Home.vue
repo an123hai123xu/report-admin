@@ -110,9 +110,6 @@ export default {
         this.openKeys = latestOpenKey ? [latestOpenKey] : [];
       }
     },
-    navi() {
-      // this.$router.push("/login");
-    },
   },
 };
 </script>

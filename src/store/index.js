@@ -5,7 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        loginStatus: false
+        user: {
+            loginStatus: false,
+            username: '',
+            appkey: '',
+            role: '', //角色
+            email: ''
+        }
     },
     mutations: {},
     actions: {},

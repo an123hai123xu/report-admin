@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import store from '@/store'
+// import store from '@/store'
 import VueRouter from 'vue-router';
 import Home from '../views/layout/Home.vue';
 
@@ -25,7 +25,7 @@ const routes = [{
         path: '/login',
         name: 'Login',
         component: () =>
-            import ( /* webpackChunkName: "about" */ '@/views/login/login.vue')
+            import ('@/views/login/login.vue')
     }
 ]
 
@@ -34,9 +34,9 @@ const router = new VueRouter({
 })
 
 // 路由守卫
-router.beforeEach((to, from, next) => {
-    if (to.name !== 'Login' && !store.state.loginSattus) next({ name: 'Login' })
-    else next()
-})
+// router.beforeEach((to, from, next) => {
+//     if (to.name !== 'Login' && !store.state.user.loginStatus) next({ name: 'Login' })
+//     else next()
+// })
 
 export default router
