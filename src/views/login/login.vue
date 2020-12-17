@@ -8,7 +8,7 @@
         >
           <a-input
             v-decorator="[
-              'userName',
+              'email',
               { rules: [{ required: true, message: '请输入用户名!' }] },
             ]"
             placeholder="用户名"
@@ -45,6 +45,7 @@
   </div>
 </template>
 <script>
+import api from "../../api/user.js";
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some((field) => fieldsError[field]);
 }
@@ -64,7 +65,7 @@ export default {
   methods: {
     userNameError() {
       const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched("userName") && getFieldError("userName");
+      return isFieldTouched("email") && getFieldError("email");
     },
     passwordError() {
       const { getFieldError, isFieldTouched } = this.form;
@@ -74,7 +75,17 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("要发送的数据: ", values);
+          api
+            .login(values)
+            .then((result) => {
+              console.log(result);
+              this.$store.state.user.loginStatus = true;
+              this.$message.success("登录成功");
+              this.$router.push({ path: "/" });
+            })
+            .catch((error) => {
+              this.$message.error(error);
+            });
         }
       });
     },
