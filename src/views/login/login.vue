@@ -13,7 +13,11 @@
             ]"
             placeholder="用户名"
           >
-            <a-icon slot="prefix" type="user" style="color: rgba(0, 0, 0, 0.25)" />
+            <a-icon
+              slot="prefix"
+              type="user"
+              style="color: rgba(0, 0, 0, 0.25)"
+            />
           </a-input>
         </a-form-item>
         <a-form-item
@@ -28,7 +32,11 @@
             type="password"
             placeholder="密码"
           >
-            <a-icon slot="prefix" type="lock" style="color: rgba(0, 0, 0, 0.25)" />
+            <a-icon
+              slot="prefix"
+              type="lock"
+              style="color: rgba(0, 0, 0, 0.25)"
+            />
           </a-input-password>
         </a-form-item>
         <a-form-item>
@@ -82,6 +90,7 @@ export default {
               this.$store.state.user.loginStatus = true;
               this.$message.success("登录成功");
               this.$router.push({ path: "/" });
+              this.$store.dispatch("setUserInfo", result);
             })
             .catch((error) => {
               this.$message.error(error);

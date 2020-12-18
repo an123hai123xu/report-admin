@@ -1,19 +1,35 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import userCookie from "../utils/userCookie.js";
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: {
-            loginStatus: false,
-            username: '',
-            appkey: '',
-            role: '', //角色
-            email: ''
+        //用户基本信息
+        user: userCookie.getUserCookie()
+    },
+    mutations: {
+        setUserInfo(state, userinfo) {
+            state.user = userinfo;
+            userCookie.setCookie(userinfo);
+        },
+        logout(state) {
+            state.user = {
+                username: '',
+                appkey: '',
+                role: '',
+                email: ''
+            }
         }
     },
-    mutations: {},
-    actions: {},
+    actions: {
+        setUserInfo({ commit }, userinfo) {
+            commit('setUserInfo', userinfo)
+        },
+        logout({ commit }) {
+            commit('logout');
+            userCookie.removeCookie()
+        }
+    },
     modules: {}
 })
