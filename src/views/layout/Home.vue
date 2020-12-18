@@ -72,7 +72,7 @@
             </a-avatar>
             <a-menu slot="overlay">
               <a-menu-item>
-                <a href="javascript:;">退出登录</a>
+                <a href="javascript:;" @click="logout">退出登录</a>
               </a-menu-item>
             </a-menu>
           </a-dropdown>
@@ -109,6 +109,9 @@ export default {
       } else {
         this.openKeys = latestOpenKey ? [latestOpenKey] : [];
       }
+    },
+    logout() {
+      this.$store.dispatch("logout");
     },
   },
 };
