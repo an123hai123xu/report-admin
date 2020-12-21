@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         //用户基本信息
-        user: userCookie.getUserCookie()
+        user: userCookie.getUserCookie(),
+        menuRoute: []
     },
     mutations: {
         setUserInfo(state, userinfo) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
                 role: '',
                 email: ''
             }
+        },
+        setMenuRoute(state, menuroute) {
+            state.menuRoute = menuroute
         }
     },
     actions: {
@@ -29,6 +33,9 @@ export default new Vuex.Store({
         logout({ commit }) {
             commit('logout');
             userCookie.removeCookie()
+        },
+        setMenuRoute({ commit }, menuroute) {
+            commit('setMenuRoute', menuroute)
         }
     },
     modules: {}
