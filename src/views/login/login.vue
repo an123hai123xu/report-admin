@@ -86,11 +86,9 @@ export default {
           api
             .login(values)
             .then((result) => {
-              console.log(result);
-              this.$store.state.user.loginStatus = true;
               this.$message.success("登录成功");
-              this.$router.push({ path: "/" });
               this.$store.dispatch("setUserInfo", result);
+              this.$router.push({ path: "/" });
             })
             .catch((error) => {
               this.$message.error(error);
